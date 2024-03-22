@@ -1,15 +1,11 @@
-def third_task(file_1_path):
-    with open(file_1_path, 'r') as file_1:
-        lines = file_1.readlines()
-        if lines:
-            del lines[-1]
-
-
-    with open(file_1_path, 'w') as file_1:
-        file_1.writelines(lines)
-
-    file_2_path = r"C:\Users\sasha\Desktop\new_file.txt"
-    with open(file_2_path, 'w') as file_2:
-        file_2.writelines(lines)
-
-third_task(r"C:\Users\sasha\Desktop\file1.txt")
+def find_longest_line(file_path):
+    with open(file_path,'r') as file_1:
+        content = file_1.readlines()
+    longest_line = ''
+    for line in content:
+        if len(line) > len(longest_line):
+            longest_line = line
+    return print(f'''
+longest line is {longest_line}
+''')
+find_longest_line(r"C:\Users\sasha\Desktop\file1.txt")
