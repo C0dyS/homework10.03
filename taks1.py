@@ -1,17 +1,31 @@
-def first_task(file_1,file_2):
-    with open(file_1,'r') as file_1:
-        first_file_empty_check = file_1.readline()
-        if first_file_empty_check == ' ':
-            return -1
-        file_1.seek(0)
-        with open(file_2, 'r') as file_2:
-            second_file_empty_check = file_2.readline()
-            if second_file_empty_check == ' ':
-                return -1
-            file_2.seek(0)
-            for file_1_line in file_1:
-                for file_2_line in file_2:
-                    if file_1_line != file_2_line:
-                        print(f'{file_1_line} doesnt match {file_2_line}')
+def second_task(file_1):
+    vowels = ['a', 'e', 'i', 'o', 'u', 'y']
+    consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z']
+    with open(file_1, 'r') as file_1:
+        content = file_1.read()
 
-first_task(r'C:\Users\sasha\Desktop\file1.txt', r'C:\Users\sasha\Desktop\file2.txt')
+    number_of_vowels_in_file_1 = 0
+    number_of_consonants_in_file_1 = 0
+    number_of_characters_in_file_1 = 0
+    number_of_numerics_in_file_1 = 0
+    for char in content:
+        number_of_characters_in_file_1 += 1
+        if char in vowels:
+            number_of_vowels_in_file_1 += 1
+        elif char in consonants:
+            number_of_consonants_in_file_1 += 1
+        elif char.isdigit():
+            number_of_numerics_in_file_1 +=1
+    number_of_lines_in_file_1 = sum(1 for line in content)
+    file_2_path = r'C:\Users\sasha\Desktop\data_of_file_1.txt'
+    with open(file_2_path, 'w') as file_2:
+        file_2.write(f'Number of characters: {number_of_characters_in_file_1}\n')
+        file_2.write(f'Number of lines: {number_of_lines_in_file_1}\n')
+        file_2.write(f'Number of vowels: {number_of_vowels_in_file_1}\n')
+        file_2.write(f'Number of consonants: {number_of_consonants_in_file_1}\n')
+        file_2.write(f'Number of numerics: {number_of_numerics_in_file_1}\n')
+
+
+
+second_task(r"C:\Users\sasha\Desktop\file1.txt")
+
