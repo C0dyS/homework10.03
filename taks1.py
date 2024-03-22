@@ -1,11 +1,10 @@
-def find_longest_line(file_path):
+def find_amount_of_selected_word(file_path,word):
+    amount_of_selected_word = 0
     with open(file_path,'r') as file_1:
-        content = file_1.readlines()
-    longest_line = ''
-    for line in content:
-        if len(line) > len(longest_line):
-            longest_line = line
-    return print(f'''
-longest line is {longest_line}
-''')
-find_longest_line(r"C:\Users\sasha\Desktop\file1.txt")
+        for line in file_1:
+            words = line.split()
+            amount_of_selected_word += words.count(word)
+
+    return amount_of_selected_word
+
+print(find_amount_of_selected_word(r"C:\Users\sasha\Desktop\file1.txt",'hey'))
